@@ -15,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         //
-        $categories = Book::all();
+        $books = Book::all();
 
         return view('books.index', compact('books')); // return to View, Model of "books" route??
     }
@@ -39,7 +39,7 @@ class BookController extends Controller
     public function store(Request $request) // [Post] method for create
     {
         Book::create([
-            'name' => $request->input('name')
+            'book_name' => $request->input('book_name')
         ]);
 
         return redirect()->route('books.index');
@@ -77,7 +77,7 @@ class BookController extends Controller
     public function update(Request $request, Book $book) // [Post] method
     {
         $book->update([
-            'name' => $request->input('name')
+            'book_name' => $request->input('book_name')
         ]);
 
         return redirect()->route('books.index');

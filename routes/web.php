@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
 });
 
-Route::resource('books', App\Http\Controllers\BookController::class); //  route name, controller path
+// Librarian routes - no role set yet though, just authentication
+Route::resource('books', BookController::class)
+->middleware('auth'); //  route name, controller path
 
 require __DIR__.'/auth.php';
