@@ -15,9 +15,11 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::view('/','welcome');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
