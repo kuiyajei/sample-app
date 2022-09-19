@@ -15,21 +15,30 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
+
+//! -- All users --
+Route::view('/','welcome'); // SYNTAX: 1st param - url; 2nd param - view page's name / function from controller or path
+//Route::get('','');
+
+//* "usually you'd want to set the route in a controller function" - TraversyMedia
+// METHOD 1
+// Route::get('/', function(){ 
 //     return view('welcome');
 // });
 
-Route::view('/','welcome');
+// METHOD 2 "preferred"
+Route::get('/','\Public\PageController@home')->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
+//! -- Dynamic view depending on Role --
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
 });
 
-// Librarian routes - no role set yet though, just authentication
+//! -- Librarian routes - no role set yet though, just authentication --
 Route::resource('books', BookController::class)
 ->middleware('auth'); //  route name, controller path
 

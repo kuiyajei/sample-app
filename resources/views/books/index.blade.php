@@ -33,10 +33,12 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <a class="btn btn-primary" href="{{ route('books.create')}}">Add a book</a>
+                    <a class="btn btn-primary" href="{{ route('books.create')}}">Add a book</a> <br><br>
+                    <a href="/" class="btn btn-secondary">click me to go back to the welcome page</a>
+                    {{-- <a href="{{ route('home')}}" class="btn btn-secondary">this does the same thing but echoes a route</a> --}}
+                    {{-- {{route('/')}} --}}
                 </div>
             </div>
         </div>
     </div>
-{{--    <a href="{{route('welcome')}}" class="btn btn-secondary">click me to go back to the welcome page</a>--}}
 </x-app-layout>
