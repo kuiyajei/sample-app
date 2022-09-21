@@ -5,7 +5,8 @@
         </h2>
     </x-slot>
 
-{{--    copy-pasted front-end stuff from dashboard.php--}}
+
+    {{--    copy-pasted front-end stuff from dashboard.php--}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -13,34 +14,29 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Book Name</th>
+                            <th>Patron Name</th>
                             <th>...</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($books as $book)
+                        @foreach ($patrons as $patron) <!-- $fromRouteName as $whateverName -->
                             <tr>
-                                <td>{{ $book->book_name }}</td>
+                                <td>{{ $patron->patron_name }}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="{{ route('books.edit', $book)}}">Edit</a>
-                                    <form method="POST" action="{{ route('books.destroy', $book) }}">
+                                    <a class="btn btn-warning" href="{{ route('patrons.edit', $patron)}}">Edit</a>
+                                    <form method="POST" action="{{ route('patrons.destroy', $patron) }}">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit button" onclick="return confirm('Are you sure you want to delete this?')" class="btn btn-danger">Delete</button>
                                     </form>
-                                </td> {{-- pass in the object $book, by default will find record id --}}
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <a class="btn btn-primary" href="{{ route('books.create')}}">Add a book</a> <br><br>
-                    <a href="/" class="btn btn-secondary">click me to go back to the welcome page</a>
-                    {{-- <a href="{{ route('home')}}" class="btn btn-secondary">this does the same thing but echoes a route</a> --}}
-                    {{-- {{route('/')}} --}}
+                    <a class="btn btn-primary" href="{{ route('patrons.create')}}">Add a patron</a> <br><br>
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- @include('patrons.index'); --}}
 </x-app-layout>

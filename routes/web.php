@@ -3,6 +3,8 @@
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PatronController;
+use App\Http\Livewire\Patrons;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::view('/','welcome'); // SYNTAX: 1st param - url; 2nd param - view page's 
 // });
 
 // METHOD 2 "preferred"
-Route::get('/','\Public\PageController@home')->name('home');
+Route::get('/','App\Http\Controllers\Public\PageController@home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -39,7 +41,13 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 //! -- Librarian routes - no role set yet though, just authentication --
-Route::resource('books', BookController::class)
-->middleware('auth'); //  route name, controller path
+Route::resource('books', BookController::class) //  route name, controller
+->middleware('auth'); 
+
+// Route::resource('patrons', PatronController::class)
+// ->middleware('auth');
+
+
+Route::get('/patron',Patrons::class)->name('patron')->middleware('auth'); // (customer URL, livewireComponentNameSlashController)
 
 require __DIR__.'/auth.php';

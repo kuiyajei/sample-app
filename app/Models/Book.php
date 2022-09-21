@@ -9,4 +9,8 @@ class Book extends Model
 {
     use HasFactory;
     protected $fillable = ['book_name'];
+
+    // public function patron(){
+    //     return $this->hasOne(Patron::class);
+    // }
 }
