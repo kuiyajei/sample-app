@@ -80,7 +80,6 @@ class Patrons extends Component
     {
         Patron::find($id)->delete();
         session()->flash('message', 'Patron Removed');
-        $this->confirmDeletion = false;
     }
 
     public function askDelete()

@@ -25,7 +25,14 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Patron Name</th>
-                                <th width="150px">Action</th>
+                                <th width="150px">
+                                    Action
+                                    @if($confirmDeletion)
+                                        <button wire:click.prevent="cancel()" class="btn btn-secondary btn-sm">Cancel</button>
+                                    @else
+                                        <button wire:click.prevent="askDelete()" class="btn btn-danger btn-sm">Delete</button>
+                                    @endif
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,10 +43,8 @@
                                 <td>
                                     @if($confirmDeletion)
                                         <button wire:click="delete({{ $patron->id }})" class="btn btn-danger btn-sm">Delete</button>
-                                        <button wire:click.prevent="cancel()" class="btn btn-secondary btn-sm">Cancel</button>
                                     @else
                                         <button wire:click="edit({{ $patron->id }})" class="btn btn-primary btn-sm">Edit</button>
-                                        <button wire:click.prevent="askDelete()" class="btn btn-danger btn-sm">Delete</button>
                                     @endif
                                 </td>
                             </tr>
