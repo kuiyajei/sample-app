@@ -11,6 +11,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
                     <a href="/" class="btn btn-secondary">click me to go back to the welcome page</a>
 
                     <!--Displays Update or Create-->
